@@ -1,5 +1,9 @@
 import '../style/style.scss';
+import 'bootstrap';
+var Masonry = require('masonry-layout');
+
 import { routes } from './routes';
+import { PageList } from './PageList';
 
 let pageArgument;
 
@@ -14,3 +18,11 @@ const setRoute = () => {
 
 window.addEventListener("hashchange", () => setRoute());
 window.addEventListener("DOMContentLoaded", () => setRoute());
+
+const searchGame = (event) => {
+  event.preventDefault();
+  let search = document.getElementById("searched_game").value;
+  PageList(search,"https://api.rawg.io/api/games");
+}
+
+document.getElementById("game_search_form").addEventListener("submit", searchGame);

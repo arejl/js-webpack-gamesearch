@@ -8,11 +8,27 @@
   <link rel="stylesheet" href="dist/bundle.css" />
 </head>
 <body>
-  <a href="#">Home</a>
-  <a href="#pagelist">PageList</a>
-  <!-- <a href="#pagelist/borderlands">PageList borderlands</a> -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container col-lg-9">
+      <a class="navbar-brand" href="#">GameFinder</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+        </ul>
+        <form id="game_search_form" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searched_game">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>    
+  </nav>
 
-  <section id="pageContent">Choisissez un lien</section>
+  <section id="pageContent" class="col-lg-9 mx-auto py-3"></section>
 
   <script src="dist/bundle.js"></script>
 </body>
