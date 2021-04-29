@@ -1,0 +1,30 @@
+.innerlink, .innerlink:visited {
+	text-decoration: none;
+	position: relative;
+	color: $text-color;
+	
+	&:after {
+		content: '';
+		height: 3px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background: $link-color;
+		transition: 0.2s;
+	}
+
+	&:hover:after {
+		width: 100%;
+	}
+	
+	&.block {
+		display: block;
+		padding: 0.5em;
+		
+		&:hover {
+			background: $text-color;
+			color:$link-color;
+		}
+	}
+}

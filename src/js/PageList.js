@@ -1,13 +1,24 @@
+import { storeIcon } from './index';
+import dayjs from 'dayjs';
+
 const PageList = (argument = "", givenUrl = "https://api.rawg.io/api/games?dates=2021-04-10,2022-04-10&ordering=-added") => {
   const card = (article) => {
+    let icons = article.platforms.map(store => storeIcon(store.platform.name)).filter((v, i, a) => a.indexOf(v) === i).map(image => `<img src=${image}>`).join(" ");
     return `
-    <div class="card bg-dark text-white m-3">
+    <div class="card text-white m-3">
       <img class="card__image" src="${article.background_image}" alt="Card image">
+      <div class="card__default bg-dark">
+        <span>${icons}</span><br/>
+        <h5 class="pt-1">${article.name}</h5>
+      </div>
       <div class="card__overlay">
         <div class="overlay__text">
-          <h5 class="card-title">${article.name}</h5>
-          <p class="card-text">${article.released}</p>
-          <a href = "#pagedetail/${article.id}" class="btn btn-secondary">See more</a>
+          <span>
+            Release date: ${dayjs(article.released, "YYYY-MM-DD").format('DD/MM/YYYY')}<br/>
+            Rating: ${article.rating}/5<br/>
+            Genres: ${article.genres.map(genre => genre.name).join(", ")}
+          </span><br/><br/>
+          <a href = "#pagedetail/${article.id}" class="btn btn-sm btn-secondary">See more</a>
         </div>
       </div>
     </div>

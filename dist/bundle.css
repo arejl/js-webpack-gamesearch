@@ -9940,12 +9940,6 @@ h3 {
   font-weight: bold;
   font-style: normal;
 }
-body {
-  font-family: "Work-Sans", sans-serif;
-  background: #212529;
-  color: #f8f9fa;
-}
-
 .innerlink, .innerlink:visited {
   text-decoration: none;
   position: relative;
@@ -9973,10 +9967,53 @@ body {
   color: #dc3545;
 }
 
-h2 {
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #dc3545;
+.card {
+  position: relative;
+  transition: all 0.5s ease-in;
+  width: 350px;
+  height: 350px;
+  background-color: #151515;
+  border-radius: 5px;
+}
+.card__image {
+  display: block;
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.card__default {
+  padding: 20px;
+  border-radius: 0 0 5px 5px;
+}
+.card__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: none;
+  transition: 0.5s ease;
+  background-color: #151515;
+}
+
+.card:hover .card__overlay {
+  opacity: 1;
+}
+
+.overlay__text {
+  color: #f8f9fa;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .description {
@@ -10012,51 +10049,24 @@ h2 {
   margin: 10px;
 }
 
+body {
+  font-family: "Work-Sans", sans-serif;
+  background: #151515;
+  color: #f8f9fa;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #dc3545;
+}
+
 .articles {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.card {
-  position: relative;
-  transition: all 0.5s ease-in;
-  width: 350px;
-  height: 350px;
-}
-.card__image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-.card__overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  visibility: none;
-  transition: 0.5s ease;
-  background-color: #212529;
-}
-
-.card:hover .card__overlay {
-  opacity: 1;
-}
-
-.overlay__text {
-  color: #f8f9fa;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
+.navbar {
+  background-color: #151515;
 }

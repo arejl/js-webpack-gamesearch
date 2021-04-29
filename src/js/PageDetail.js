@@ -1,12 +1,7 @@
 import { PageList } from './PageList';
+import { storeIcon } from './index';
 
 const PageDetail = (argument) => {
-  const storeIcon = (name) => {
-    if (name.toLowerCase().includes("xbox")) { return 'src/assets/images/xbox.svg' }
-    else if (name.toLowerCase().includes("playstation")) { return 'src/assets/images/ps4.svg' }
-    else if (name.toLowerCase().includes("switch") || name.toLowerCase().includes("nintendo")) { return 'src/assets/images/switch.svg' }
-    else { return 'src/assets/images/windows.svg' }
-  }
   const preparePage = () => {
     let cleanedArgument = argument.replace(/\s+/g, "-");
 
@@ -32,11 +27,11 @@ const PageDetail = (argument) => {
           articleDOM.querySelector("span.genres").innerHTML += `${genres.map(element => `<a class="innerlink" href="#">${element.name}</a>`).join(", ")}`
           articleDOM.querySelector("span.tags").innerHTML += `${tags.map(element => `<a class="innerlink" href="#">${element.name}</a>`).join(", ")}`
           articleDOM.querySelector("span.buy").innerHTML += `${stores.map(element => `<a class="innerlink" href="">${element.store.name}</a> <img src="${storeIcon(element.store.name)}">`).join("</br>")}`
-          articleDOM.querySelectorAll("span.genres a").forEach(element => { element.addEventListener("click", event => { event.preventDefault();PageList("", `https://api.rawg.io/api/games?genres=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) })});
-          articleDOM.querySelectorAll("span.tags a").forEach(element => { element.addEventListener("click", event => { event.preventDefault(); PageList("", `https://api.rawg.io/api/games?tags=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) }) });
-          articleDOM.querySelectorAll("span.publishers a").forEach(element => { element.addEventListener("click", event => { event.preventDefault(); PageList("", `https://api.rawg.io/api/games?publishers=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) }) });
-          articleDOM.querySelectorAll("span.developers a").forEach(element => { element.addEventListener("click", event => { event.preventDefault(); PageList("", `https://api.rawg.io/api/games?developers=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) }) });
-          articleDOM.querySelectorAll("span.platforms a").forEach(element => { element.addEventListener("click", event => { event.preventDefault();PageList("", `https://api.rawg.io/api/games?platforms=${element.id}`) })});
+          articleDOM.querySelectorAll("span.genres a").forEach(element => { element.addEventListener("click", event => { event.preventDefault();history.pushState({}, '', 'index.html#');PageList("", `https://api.rawg.io/api/games?genres=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) })});
+          articleDOM.querySelectorAll("span.tags a").forEach(element => { element.addEventListener("click", event => { event.preventDefault(); history.pushState({}, '', 'index.html#');PageList("", `https://api.rawg.io/api/games?tags=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) }) });
+          articleDOM.querySelectorAll("span.publishers a").forEach(element => { element.addEventListener("click", event => { event.preventDefault(); history.pushState({}, '', 'index.html#');PageList("", `https://api.rawg.io/api/games?publishers=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) }) });
+          articleDOM.querySelectorAll("span.developers a").forEach(element => { element.addEventListener("click", event => { event.preventDefault(); history.pushState({}, '', 'index.html#');PageList("", `https://api.rawg.io/api/games?developers=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) }) });
+          articleDOM.querySelectorAll("span.platforms a").forEach(element => { element.addEventListener("click", event => { event.preventDefault();history.pushState({}, '', 'index.html#');PageList("", `https://api.rawg.io/api/games?platforms=${element.id}`) })});
         });
     };
     

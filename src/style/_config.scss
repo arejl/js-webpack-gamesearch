@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Work-Sans';
+  src: url('../assets/fonts/Work_Sans/static/WorkSans-Medium.ttf');
+	font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Work-Sans';
+  src: url('../assets/fonts/Work_Sans/static/WorkSans-Bold.ttf');
+	font-weight: bold;
+  font-style: normal;
+}
+
+$text-color: #f8f9fa;
+$background-color: #151515;
+$link-color:#dc3545;
+
+@mixin media-md {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin media-lg {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin media-xl {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}
