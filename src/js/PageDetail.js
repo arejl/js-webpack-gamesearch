@@ -31,7 +31,7 @@ const PageDetail = (argument) => {
           articleDOM.querySelector("span.platforms").innerHTML += `${platforms.map(element => `<a class="innerlink" href="#" id="${element.platform.id}">${element.platform.name}</a>`).join("</br>")}`
           articleDOM.querySelector("span.genres").innerHTML += `${genres.map(element => `<a class="innerlink" href="#">${element.name}</a>`).join(", ")}`
           articleDOM.querySelector("span.tags").innerHTML += `${tags.map(element => `<a class="innerlink" href="#">${element.name}</a>`).join(", ")}`
-          articleDOM.querySelector("span.buy").innerHTML += `${stores.map(element => `<a class="innerlink" href="http://${element.store.domain}">${element.store.name}</a> <img src="${storeIcon(element.store.name)}">`).join("</br>")}`
+          articleDOM.querySelector("span.buy").innerHTML += `${stores.map(element => `<a class="innerlink" href="">${element.store.name}</a> <img src="${storeIcon(element.store.name)}">`).join("</br>")}`
           articleDOM.querySelectorAll("span.genres a").forEach(element => { element.addEventListener("click", event => { event.preventDefault();PageList("", `https://api.rawg.io/api/games?genres=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) })});
           articleDOM.querySelectorAll("span.tags a").forEach(element => { element.addEventListener("click", event => { event.preventDefault(); PageList("", `https://api.rawg.io/api/games?tags=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) }) });
           articleDOM.querySelectorAll("span.publishers a").forEach(element => { element.addEventListener("click", event => { event.preventDefault(); PageList("", `https://api.rawg.io/api/games?publishers=${element.innerHTML.toLowerCase().replace(/\s+/g, "-")}`) }) });
@@ -55,6 +55,20 @@ const PageDetail = (argument) => {
     };
 
     fetchScreenshots("https://api.rawg.io/api/games/", cleanedArgument);
+
+    const fetchStores = (url, argument) => {
+      let finalURL = url + argument + `/stores?key=${process.env.RAWG_API_KEY}`;
+      fetch(`${finalURL}`)
+        .then((response) => response.json())
+        .then((response) => {
+          let { results } = response;
+          let articleDOM = document.querySelector(".page-detail .article");
+          let i = 0;
+          articleDOM.querySelectorAll("span.buy a").forEach(link => { link.href = results[i].url; i++})
+        });
+    };
+
+    fetchStores("https://api.rawg.io/api/games/", cleanedArgument);
   };
 
   const render = () => {
@@ -95,11 +109,11 @@ const PageDetail = (argument) => {
             <div class="col"><span class="buy"></span></div>
           </div>
           <div class="row py-3">
-          <div class="col"><h2>Screenshots</h2></div>
-        </div>
-        <div class="row py-3">
-          <div class="screenshots col text-center"></div>
-        </div>
+            <div class="col"><h2>Screenshots</h2></div>
+          </div>
+          <div class="row py-3">
+            <div class="screenshots col text-center"></div>
+          </div>
         </div>
       </section>
     `;
