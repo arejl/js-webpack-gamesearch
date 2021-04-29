@@ -10070,3 +10070,23 @@ h2 {
 .navbar {
   background-color: #151515;
 }
+.navbar #game_search_form .search-input {
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 20px;
+  border: solid 1px #b7b9bb;
+  background-color: transparent;
+  padding-right: 10px;
+}
+.navbar #game_search_form .search-input input {
+  border-radius: 20px;
+  background-color: transparent;
+  border: none;
+  flex-shrink: 2;
+}
+.navbar #game_search_form .search-input input::placeholder {
+  color: #b7b9bb;
+}
+.navbar #game_search_form .search-input input, .navbar #game_search_form .search-input input select, .navbar #game_search_form .search-input input textarea {
+  color: #f8f9fa;
+}

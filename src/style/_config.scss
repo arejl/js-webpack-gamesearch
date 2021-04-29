@@ -16,6 +16,11 @@ $text-color: #f8f9fa;
 $background-color: #151515;
 $link-color:#dc3545;
 
+@function fade($color){
+  @if (lightness($color) > 40%) {
+    @return #b7b9bb;
+}}
+
 @mixin media-md {
   @media screen and (min-width: 768px) {
     @content;

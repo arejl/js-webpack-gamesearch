@@ -24,7 +24,28 @@ h2{
 
 .navbar{
 	background-color: $background-color;
-	
+	#game_search_form{
+		.search-input{
+			display: flex;
+			flex-wrap: nowrap;
+			border-radius: 20px;
+			border:solid 1px fade($text-color);
+			background-color: transparent;
+			padding-right:10px;
+			input{
+				border-radius: 20px;
+				background-color: transparent;
+				border:none;
+				flex-shrink: 2;
+				&::placeholder{
+					color:fade($text-color);
+				}
+				&, select, textarea{
+					color:$text-color
+				}
+			}
+		}
+	}
 }
 
 

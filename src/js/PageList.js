@@ -47,7 +47,7 @@ const PageList = (argument = "", givenUrl = "https://api.rawg.io/api/games?dates
             articles += card(article);
           });
           if (response.next) {
-            document.querySelector(".page-list").innerHTML += `<button class="btn btn-primary btn-block w-50 mx-auto" id="next_page">Show more</button>`;
+            document.querySelector(".page-list").innerHTML += `<button class="btn btn-danger btn-block w-50 mx-auto" id="next_page">Show more</button>`;
             document.getElementById("next_page").addEventListener("click", (event) => { expandList(response.next)
             })
           };
@@ -67,7 +67,7 @@ const PageList = (argument = "", givenUrl = "https://api.rawg.io/api/games?dates
           document.querySelector(".page-list .articles").innerHTML += card(article);
         });
         if (document.querySelector(".page-list .articles").childElementCount < 25 && response.next) {
-          document.querySelector(".page-list .articles").innerHTML += `<button class="btn btn-primary btn-block w-50 mx-auto" id="next_page">Show more</button>`
+          document.querySelector(".page-list .articles").innerHTML += `<button class="btn btn-danger btn-block w-50 mx-auto" id="next_page">Show more</button>`
           document.getElementById("next_page").addEventListener("click", (event) => { expandList(response.next)
           });
         }
